@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:latest
+
+    environment:
+
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: db-frknz
+      POSTGRES_DB: example
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    depends_on: 
+    - postgres
+
+    ports:
+      - "8001:8000"
+
+  nginx:
+    image: nginx:latest
+
+    volumes:
+    - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+
+    ports:
+      - "8000:80"
+
+    depends_on:
+      - backend 
+
+volumes:
+  postgres_data:
