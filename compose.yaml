@@ -17,8 +17,6 @@ services:
     depends_on: 
     - postgres
 
-    ports:
-
   nginx:
     image: nginx:latest
 
