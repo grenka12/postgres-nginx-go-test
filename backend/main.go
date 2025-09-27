@@ -85,7 +85,7 @@ func addBlogHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(201)
-	fmt.Fprintf(w, "Blog post added: %s", input.Title)
+	fmt.Fprintf(w, "Blog post adde33d: %s", input.Title)
 }
 
 func main() {
@@ -102,7 +102,7 @@ func main() {
 
 	r.Use(func(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        log.Printf("Request %s %s", r.Method, r.URL.Path)
+        log.Printf("KRequest %s %s", r.Method, r.URL.Path)
         next.ServeHTTP(w, r)
     })
 })
